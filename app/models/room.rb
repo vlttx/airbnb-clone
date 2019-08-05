@@ -3,7 +3,7 @@ class Room < ApplicationRecord
 
   validates :home_type, presence: true
   validates :room_type, presence: true
-  validates :accommodates, presence: true
+  validates :accomodates, presence: true
   validates :bedroom, presence: true
   validates :bathroom, presence: true
   validates :listing_name, presence: true, length: {maximum: 50}
