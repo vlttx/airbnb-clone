@@ -22,7 +22,7 @@
 
 .body {
 	color: #565a5c;
-	background-color: #F8F8F8;
+	background-color: #eaecf1;
 }
 
 .container {
@@ -35,6 +35,7 @@
 
 .navbar-default {
 	background-color: #FFFFFF;
+	font-size: 20px;
 }
 
 .navbar-default .navbar-brand {
@@ -87,8 +88,12 @@
 .panel-default .panel-heading {
   color: #565a5c;
   background-color: #edefed;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 400
+}
+
+.panel-body {
+	font-size: 15px;
 }
 
 .row-space-1 {
