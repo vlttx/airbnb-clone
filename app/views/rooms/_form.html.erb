@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+	<div class="panel-heading"> Create your listing</div>
+		<div class="panel-body">
+	<div class="container">
+		<%= form_for @room do |f| %>
+		<div class="row">
+			<div class="col-md-4" select>
+				<div class="form-group">
+					<label>Home Type</label>
+					<%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["B&B", "B&B"]], id: "home_type",
+					prompt: "Select...", class: "form-control" %>
+				</div>
+			</div>
+			<div class="col-md-4" select>
+				<div class="form-group">
+					<label>Room Type</label>
+					<%= f.select :room_type, [["Entire", "Entire"], ["Private", "Private"], ["Shared", "Shared"]],
+					prompt: "Select...", class: "form-control" %>
+				</div>
+			</div>
+				<div class="col-md-4" select>
+				<div class="form-group">
+					<label>Accommodates</label>
+					<%= f.select :accomodates, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5+", 5]],
+					prompt: "Select...", class: "form-control" %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	</div>
+</div>
