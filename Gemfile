@@ -12,6 +12,8 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'puma', '~> 3.11'
 gem 'jquery-rails'
 gem 'devise'
+gem 'dotenv-rails'
+gem 'thin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,6 +29,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'toastr-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
