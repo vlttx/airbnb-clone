@@ -16,9 +16,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = current_user.rooms.build(room_params)
-
     if @room.save
-
       if params[:images]
         # if we can find images, then we'll look through the list and create photos for the room
         params[:images].each do |image|
@@ -27,7 +25,7 @@ class RoomsController < ApplicationController
       end
       @photos = @room.photos
       # we are going to display a list of photos, that is why it is necessary
-      redirect_to edit_room_path@room), notice: "Saved"
+      redirect_to edit_room_path(@room), notice: "Saved"
     else
       render :new
     end
@@ -49,7 +47,7 @@ class RoomsController < ApplicationController
           @room.photos.create(image: image)
         end
       end
-      redirect_to edit_room_path@room), notice: "Updated"
+      redirect_to edit_room_path(@room), notice: "Updated"
     else
       render :edit
     end
@@ -63,6 +61,6 @@ class RoomsController < ApplicationController
   end 
 
   def room_params
-    params.require(:room).permit(:home_type, :room_type, :accommodates, :bedroom, :bathroom, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_ac, :is_heating, is_wifi, :price, :active)
+    params.require(:room).permit(:home_type, :room_type, :accomodates, :bedroom, :bathroom, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_ac, :is_heating, :is_wifi, :price, :active)
   end
 end
