@@ -3,7 +3,7 @@
 		<!-- Image -->
 		<div class="row">
 			<div class="col-md-12">
-				<%= image_tag @photos[0].image.url(), class: "img-responsive" %>
+				<%= image_tag @photos[0].image.url(), class: "img-responsive" if @photos.length > 0 %>
 			</div>
 		</div>
 		<br>
@@ -84,6 +84,45 @@
 					</div>
 					</div>
 				</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+
+				  <% if @photos %>
+				  <ol class="carousel-indicators">
+				  	<% @photos.each do |photo| %>
+				    <li data-target="#myCarousel" data-slide-to="<% photo.id %>"></li>
+				    <% end %>
+				  </ol>
+
+				  <% end %>
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner">
+				  	  <% if @photos %>
+				  	  <% @photos.each do |photo| %>
+					    <div class="item <%= 'active' if photo.id == @photos[0].id %>">
+					    	<!-- if the photo is first, then we show it as active" -->
+					      <%= image_tag photo.image.url() %>
+					    </div>
+					   <% end %>
+				    <% end %>
+				  </div>
+
+				  <!-- Left and right controls -->
+				  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>		
+			</div> 		
 		</div>
 	</div>
 </div>
