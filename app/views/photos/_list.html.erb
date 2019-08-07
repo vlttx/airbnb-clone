@@ -9,6 +9,7 @@
 				<div class="panel-body">
 					<span class="pull-right">
 						<%= link_to photo, remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+						<!-- remote:true means we will use this link for AJAX -->
 					  		<i class="fa fa-times fa-lg"></i>
 				  		<% end %>
 					</span>
