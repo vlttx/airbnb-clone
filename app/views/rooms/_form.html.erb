@@ -115,6 +115,7 @@
 				</div>	
 			</div>
 			<div id="photos"><%= render 'photos/list' %></div>
+			<!-- this photos list will be refreshed with JS after removing one photo via destroy.js.erb without reloading -->
 			<div class="row">
 				<div class="form-group">
 					<%= f.check_box :active %> Active
