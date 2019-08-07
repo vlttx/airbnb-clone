@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @rooms = current_user.room
+    @rooms = current_user.rooms
   end
 
   def show
