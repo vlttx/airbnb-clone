@@ -29,7 +29,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'paperclip'
 gem 'omniauth-rails_csrf_protection'
-
+gem 'jquery-ui-rails'
 gem 'toastr-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
