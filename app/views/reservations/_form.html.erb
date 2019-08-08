@@ -1,0 +1,9 @@
+<%= form_for([@room, @room.reservations.new]) do |f| %>
+<!--we pass room into reservation because reservation needs to know which room it is on and also that is why in the resources we have a nested route -->
+<%= f.text_field :start_date, placeholder: "start date"%><br>
+<%= f.text_field :end_date, placeholder: "end date"%>
+<%= f.hidden_field :room_id, value: @room.id %>
+<%= f.hidden_field :price, value: @room.price %>
+<br>
+<%=f.submit "Book Now", class: "btn btn-primary" %>
+<% end %>
