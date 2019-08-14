@@ -3,6 +3,10 @@
 <%= form_for([@room, @room.reservations.new]) do |f| %>
 <!--we pass room into reservation because reservation needs to know which room it is on and also that is why in the resources we have a nested route -->
 <div class="row">
+	<div class="col-md-12 price_tag">
+		<span>$<%= @room.price %></span>
+		<span class="pull-right">Per Night</span>
+	</div>
 	<div class="col-md-6">Check In</div>
 	<%= f.text_field :start_date, readonly: 'true', placeholder: "Start Date", class: "form-control"%><br>
 	<div class="col-md-6">Check Out</div>
