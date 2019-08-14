@@ -8,6 +8,7 @@ class ReservationsController < ApplicationController
 		reservations = room.reservations.where("start_date >= ? OR end_date >= ?", today, today)
 		# getting only relevant reservations as we dont care abour the past
 		render json: reservations
+	end
 
 	def create
 		@reservation = current_user.reservations.create(reservation_params)
