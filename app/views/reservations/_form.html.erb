@@ -26,14 +26,14 @@
 			</tr>
 			<tr>
 				<td>Total</td>
-				<td><span id="reservation_sum"></span></td>
+				<td>$<span id="reservation_sum"></span></td>
 			</tr>
 		</tbody>
 	</table>
 	<br>
 </div>
 
-	<%=f.submit "Book Now", id:"btn_book", class: "btn btn-primary wide", disabled: 'true' %>
+	<%=f.submit "Book Now", id:"btn_book", class: "btn btn-primary wide", disabled: 'true'%>
 
 
 <% end %>
@@ -82,6 +82,8 @@
 
 						let start_date = $('#reservation_start_date').datepicker('getDate');
 						let end_date = $(this).datepicker('getDate');
+						let days = (end_date - start_date)/1000/60/60/24 + 1
+						// we divide like this because we are getting milisecs, 60 sec, 60 mins, 24 hrs and plus 1 and then we get exact days
 
 						let input = {
 							'start_date' : start_date,
@@ -90,28 +92,34 @@
 						}
 
 						$.ajax({
-							url:"/preview",
+							url: "/preview",
 							data: input,
 							success: function(data) {
 								if(data.conflict) {
 									// we got conflict from our preview action in the reservations controller
 									$('#message').text("These dates are not available.");
 									$('#preview').hide();
-									$('btn_book').attr('disabled', true);
+									$('#btn_book').attr('disabled', true);
 								} else {
-									$('#message').text("These dates are available.");
+									$('#message').text("These dates are available!");
 									$('#preview').show();
-									$('btn_book').attr('disabled', false);
+									$('#btn_book').attr('disabled', false);
+
+									let total = days * <%= @room.price %>
+									$('#reservation_days').text(days);
+									$('#reservation_sum').text(total);
+									$('#reservation_total').val('total')
+									
 
 								}
 							}
-						})
+						});
 					}
-		});
+				});
 			}
-		})
+		});
 		
-	})
+	});
 	</script>
 
 	<!-- function for datepcicker to check if a certain date is unavailable to pick by comparing to unavailableDates array -->
