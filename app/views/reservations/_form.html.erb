@@ -39,24 +39,44 @@
 
 
 <script>
+
+
+
+	function unavailable(date) {
+		dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+		// get month is plus one because January is zero
+		return [$.inArray(dmy, unavailableDates) == -1 ];
+	}
 	$(function() {
 
+		unavailableDates = [];
 		$.ajax({
 			url: '/preload', 
 			data: {'room_id': <%=@room.id %>},
 			dataType: 'json',
 			success: function(data) {
 				$.each(data, function(arrID, arrValue){
-					for(let d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1))
-				})
+					for(let d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1)){
+						unavailableDates.push($.datepicker.formatDate('d-m-yy', d));
+					}
+				});
+				$('#reservation_start_date').datepicker({
+					dateFormat: 'dd-mm-yy',
+					minDate: 0,
+					maxDate: '3m',
+					beforeShowDay: unavailable
+					// running the above function unavailable
+				});
+				$('#reservation_end_date').datepicker({
+					dateFormat: 'dd-mm-yy',
+					minDate: 0,
+					maxDate: '3m',
+					beforeShowDay: unavailable
+		});
 			}
 		})
-		$('#reservation_start_date').datepicker({
-			dateFormat: 'dd-mm-yy'
-		});
-		$('#reservation_end_date').datepicker({
-			dateFormat: 'dd-mm-yy'
-		});
+		
 	})
 	</script>
 
+	<!-- function for datepcicker to check if a certain date is unavailable to pick by comparing to unavailableDates array -->
