@@ -40,6 +40,17 @@
 
 <script>
 	$(function() {
+
+		$.ajax({
+			url: '/preload', 
+			data: {'room_id': <%=@room.id %>},
+			dataType: 'json',
+			success: function(data) {
+				$.each(data, function(arrID, arrValue){
+					for(let d = new Date(arrValue.start_date); d <= new Date(arrValue.end_date); d.setDate(d.getDate() + 1))
+				})
+			}
+		})
 		$('#reservation_start_date').datepicker({
 			dateFormat: 'dd-mm-yy'
 		});
