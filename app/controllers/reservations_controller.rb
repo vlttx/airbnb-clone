@@ -2,6 +2,13 @@ class ReservationsController < ApplicationController
 	before_action :authenticate_user!
 	#so that only logged in user can make a reservation
 
+	def preload
+		room = Room.find(params[:room_id])
+		today = Date.today
+		reservations = room.reservations.where("start_date >= ? OR end_date >= ?", today, today)
+		# getting only relevant reservations as we dont care abour the past
+		render json: reservations
+
 	def create
 		@reservation = current_user.reservations.create(reservation_params)
 
