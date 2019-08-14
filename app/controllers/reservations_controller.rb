@@ -38,7 +38,7 @@ class ReservationsController < ApplicationController
 		# we are checking if we can find any room reservations between the given dates
 	end
 
-	def reservations_params
+	def reservation_params
 		params.require(:reservation).permit(:start_date, :end_date, :price, :total, :room_id)
 		# we don't need current user id because when we create it we create it under a user
 	end
