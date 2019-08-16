@@ -17,7 +17,8 @@ class Room < ApplicationRecord
   validates :address, presence: true
 
 
-  def average_rating
-    reviews.count == 0 ? 0 : reviews.average(:star).round(2)
+  def average_rating(id)
+    @room = Room.find_by_id(id)
+    @room.reviews.count > 0 && (@room.reviews.find{|r| r.star != nil}) ? @room.reviews.average(:star).round(2) : 0
   end
-end
+  end
