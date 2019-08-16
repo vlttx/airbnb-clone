@@ -22,6 +22,8 @@ class MessagesController < ApplicationController
 		end
 	end
 
+	# include respond to js
+
 	private
 
 		def set_conversation
