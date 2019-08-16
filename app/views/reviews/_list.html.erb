@@ -7,17 +7,28 @@
 	<hr>
 	<div class="row">
 		<div class="col-md-1">
-			<% image_tag avatar_url, class: "imd-circle avatar-medium"
+			<%= image_tag avatar_url, class: "imd-circle avatar-medium" %>
 		</div>
 		<div class="col-md-11">
-			<strong><%= r.user.fullname %> <%= r.star %> </strong>
+			<strong><%= r.user.fullname %> <div id="stars_<%= r.id %>"></div> </strong>
 			<span class="pull-right">
-				<%= link_to 'Remove My Review', [@room, r], method: delete, data: {confirm: "Are you sure?"} %>
+				<%= link_to 'Remove My Review', [@room, r], method: :delete, data: {confirm: "Are you sure?"} if current_user && current_user == r.user%>
 			</span>
 		</div>
 		<div><%= r.created_at.strftime("%v") %></div>
 		<div><%= r.comment %></div>
 	</div>
+<script>
+	$("#stars_<%= r.id %>").raty({
+		path: '/assets',
+		readOnly: true,
+		score: <%= r.star %>
+	});
+</script>
+
 	<% end %>
 
 <% end %>
+
+
+<%# <div id="stars_<%= r.id because each review needs to be unique %>
