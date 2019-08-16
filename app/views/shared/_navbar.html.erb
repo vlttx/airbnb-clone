@@ -24,7 +24,7 @@
                   <%= current_user.fullname %><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                 <li><%= link_to "Your Listings", rooms_path %></li>
-                <li><%= link_to "Your Reservations", yoreservations_path %></li>
+                <li><%= link_to "Your Reservations", your_reservations_path %></li>
                  <li><%= link_to "Your Trips", your_trips_path %></li>
                 <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
                 <li role="separator" class="divider"></li>
@@ -34,13 +34,17 @@
             </li>
             <% end %>
             <li>
-          <a href="#"><i class="fa fa-envelope-o"></i> Messages</a>
+              <%= link_to conversations_path do %>
+             <i class="fa fa-envelope-o"></i> Messages
+             <% end %>
         </li>
         <li>
-          <a href="#"><i class="fa fa-home fa-lg"></i> Become a Host</a>
+          <%= link_to new_room_path do %>
+          <i class="fa fa-home fa-lg"></i> Become a Host
+          <% end %>
         </li>
 
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
