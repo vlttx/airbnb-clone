@@ -7,12 +7,13 @@ ruby '2.6.0'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+gem 'dotenv-rails'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'jquery-rails'
 gem 'devise'
-gem 'dotenv-rails'
+gem 'turbolinks'
 gem 'thin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -28,7 +29,7 @@ gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'paperclip'
-gem 'omniauth-rails_csrf_protection'
+# gem 'omniauth-rails_csrf_protection'
 gem 'jquery-ui-rails'
 gem 'toastr-rails'
 gem 'omniauth'

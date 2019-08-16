@@ -11,12 +11,12 @@ default: &default
 
 development:
   <<: *default
-  database: db/development.postgresql
-
-  development:
-  adapter: postgresql
-  encoding: unicode
   database: airbnb-clone_development
+
+  # development:
+  # adapter: postgresql
+  # encoding: unicode
+  # database: airbnb-clone_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
