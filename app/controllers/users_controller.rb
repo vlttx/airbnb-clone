@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	def show
-		if params[:id]
 		@user = User.find(params[:id])
+		@rooms = @user.rooms
 	end
-end
 end
