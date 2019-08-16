@@ -16,6 +16,7 @@
 				<div class="container">
 					
 					<%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
+					<!-- remote true because we're sending ajax request -->
 						<div class="form-group">
 							<%= f.text_area :content, placeholder: "Add a personal message", class: "form-control" %>
 						</div>
@@ -32,6 +33,7 @@
 
 		<div id="chat">
 			<%= render @messages, locals: {conversation: @conversation} %>
+			<!-- first we will render all messages into this div and then we'll prepend with create.js a new msg, no need to reload -->
 		</div>
 
 	</div>
