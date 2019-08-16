@@ -8,6 +8,12 @@ class RoomsController < ApplicationController
 
   def show
       @photos = @room.photos
+      @booked = Reservation.where("room_id = ? AND user_id = ?", @room.id, current_user.id).present? if current_user
+      #check if this user has booked this room
+      @reviews = @room.reviews
+      @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
+      # check if this user has made a review already, cause there can be only one
+
   end
 
   def new
