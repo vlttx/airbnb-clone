@@ -17,4 +17,5 @@
 //= require bootstrap-sprockets
 //= require jquery-ui
 //= require activestorage
+//= require private_pub
 //= require_tree .
