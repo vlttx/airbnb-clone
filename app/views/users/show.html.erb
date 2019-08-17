@@ -44,5 +44,25 @@
 
 		</div>
 
+		<h4>Reviews</h4>
+
+		<% @rooms.each do |r| %>
+			<% if !r.reviews.blank? %>
+				<% r.reviews.each do |rev| %>
+				<div class="row">
+					<div class="col-md-2 text-center">
+						<%= image_tag avatar_url, class: "img-circle avatar-medium" %> <br>
+						<%= rev.user.fullname %>
+					</div>
+						<div class="col-md-10">
+						<%= link_to r.listing_name, r %><br>
+						<%= rev.comment %><br>
+						<%= rev.created_at.strftime("%v") %>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+		<% end %>
+
 	</div>
 </div>
