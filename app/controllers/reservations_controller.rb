@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:notify]
 	#so that only logged in user can make a reservation
 
 	def preload
@@ -26,11 +26,46 @@ class ReservationsController < ApplicationController
 	def create
 		@reservation = current_user.reservations.create(reservation_params)
 
-		redirect_to @reservation.room, notice: "Your reservation has been created!"
+		if @reservation
+			# send request to paypal
+			values = {
+				business: 'victoriasnotebooks-facilitator@gmail.com',
+				cmd: '_xclick',
+				upload: 1,
+				notify_url: 'http://db367e34.ngrok.io/notify',
+				# notify and your_trips are actions
+				amount: @reservation.total,
+				item_name: @reservation.room.listing_name,
+				item_number: @reservation.id,
+				quantity: '1',
+				return: 'http://db367e34.ngrok.io/your_trips'
+			}
+			redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+		else
+			redirect_to @reservation.room, alert: "There seems to be an issue with the request."
+		end
 	end
 
+	protect_from_forgery except: [:notify]
+	def notify
+		params.permit!
+		# permit all pp input params
+		status = params[:payment_status]
+		# payment status is returned by PP
+		reservation = Reservation.find(params[:item_number])
+
+		if status = "Completed"
+			reservation.update_attributes status: true
+		else
+			reservation.destroy
+		end
+
+		render nothing: true
+	end
+
+	protect_from_forgery except: [:your_trips]
 	def your_trips
-		@trips = current_user.reservations
+		@trips = current_user.reservations.where("status = ?", true)
 	end
 
 	def your_reservations
