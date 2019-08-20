@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
       #check if this user has booked this room
       @reviews = @room.reviews
       @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
+      @user = User.find_by(id: @room.user_id)
       # check if this user has made a review already, cause there can be only one
 
   end
@@ -40,9 +41,11 @@ class RoomsController < ApplicationController
   def edit
     if current_user.id == @room.user_id
       @photos = @room.photos
+
     else
       redirect_to root_path, notice: "You don't have permission."
     end
+
   end
 
   def update
@@ -53,7 +56,7 @@ class RoomsController < ApplicationController
           @room.photos.create(image: image)
         end
       end
-      redirect_to edit_room_path(@room), notice: "Updated"
+      redirect_to room_path(@room), notice: "Updated"
     else
       render :edit
     end
