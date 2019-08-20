@@ -3,7 +3,7 @@
 		<!-- Image -->
 		<div class="row">
 			<div class="col-md-12">
-				<%= image_tag @photos[0].image.url(), style: "width: 100%", class: "img-responsive" if @photos.length > 0 %>
+				<%= image_tag @photos[0].image.url(:large), class: "main-image" if @photos.length > 0 %>
 			</div>
 		</div>
 		<br>
@@ -13,7 +13,7 @@
 			<div class="col-md-8">
 				<div class="row">
 					<div class="col-md-3 text-center">
-						<%= image_tag avatar_url, class: "img-circle avatar-large" %><br><br>
+						<%= image_tag avatar_url(@user), class: "img-circle avatar-large" %><br><br>
 						<%= @room.user.fullname %>
 					</div>
 					<div class="col-md-9">
@@ -98,16 +98,14 @@
 				    <li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
 				    <% end %>
 				  </ol>
-
 				  <% end %>
-
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
 				  	  <% if @photos %>
 				  	  <% @photos.each do |photo| %>
 					    <div class="item <%= 'active' if photo.id == @photos[0].id %>">
 					    	<!-- if the photo is first, then we show it as active" -->
-					      <%= image_tag photo.image.url() %>
+					      <%= image_tag photo.image.url(:medium) %>
 					    </div>
 					   <% end %>
 				    <% end %>
@@ -183,9 +181,10 @@
 			</div>
 		</div>
 <!-- Close by rooms -->
+<% if @room.nearbys(10) %>
 <h3> Rooms nearby </h3>
 <div class="row">
-	<% for room in @room.nearbys(10) %>
+	<% for room in @room.nearbys(10)%>
 	<!-- nearbys function is from geocoder as well as distance below -->
 	<div class="col-md-4">
 		<div class="panel panel-default">
@@ -200,6 +199,7 @@
 	</div>
 	<% end %>
 </div>
+<% end %>
 	</div>
 </div>
 
