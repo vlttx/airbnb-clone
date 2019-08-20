@@ -103,7 +103,7 @@
 				  <div class="carousel-inner" role="listbox">
 				  	  <% if @photos %>
 				  	  <% @photos.each do |photo| %>
-					    <div class="item <%= 'active' if photo.id == @photos[0].id %>">
+					    <div class="item <%= 'active' if photo.id == @photos[0].id %> d-block w-100">
 					    	<!-- if the photo is first, then we show it as active" -->
 					      <%= image_tag photo.image.url(:medium) %>
 					    </div>
