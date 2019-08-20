@@ -74,7 +74,7 @@ body {
 
 .description {
   color: #575757;
-  font-size: 30px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 25px;
 }
@@ -221,11 +221,10 @@ input[type="checkbox"]:checked:before {
   text-decoration: line-through
 }
 
-.reservation-table td{
-width: 100%;
-border: 1px solid #dce0e0;
-padding: 10px;
-  
+.reservation-table td {
+  width: 100%;
+  border: 1px solid #dce0e0;
+  padding: 10px;
 }
 
 .wide {
@@ -248,7 +247,6 @@ padding: 10px;
 .conversation:hover, .conversation:focus {
   background-color: #F4F4F5;
 }
-
 
 #wrapper { 
   width:960px;
@@ -280,11 +278,11 @@ padding: 10px;
 .va-container {
   display: table;
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
 .va-middle {
-  color: #FFF;
+  color: #fff;
   vertical-align: middle;
   display: table-cell;
 }
