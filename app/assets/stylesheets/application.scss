@@ -210,7 +210,7 @@ input[type="checkbox"]:checked:before {
 }
 
 .panel-heading.preview img{  
-  height: 200px;
+  height: 300px;
   width: 100%;
   padding: 10px;
  
@@ -295,7 +295,7 @@ input[type="checkbox"]:checked:before {
 #myCarousel img {
   width: auto;
   margin:auto;
-  height: 600px;
+  height: auto;
   max-height: 700px;
   object-fit:contain;
 }
