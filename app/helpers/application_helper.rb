@@ -2,7 +2,7 @@ module ApplicationHelper
 
 	def avatar_url(id)
 		user = User.all.find_by(id: id)
-		if user.image?
+		if user && user.image?
 			user.image
 		else
 		 "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
