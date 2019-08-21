@@ -130,16 +130,14 @@
 <div class="row">
 			<div class="col-md-12">
 				<h3>Reviews <span id="average_rating"></span> (<%= @reviews.count %>)</h3>
-				<div class="container">
 					<div>
 						<%= render 'reviews/form' if @booked && !@hasReview %>
 					</div>
 					<div>
 						<%= render 'reviews/list' %>
 					</div>
-				</div>
 			</div>
-		</div>
+</div>
 
 
 
