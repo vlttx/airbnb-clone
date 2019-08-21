@@ -12,17 +12,20 @@
 				<div class="panel-body">
 					<% @trips.each do |trip| %>
 					<div class="row">
-						<div class="col-md-2">
-							<%= trip.start_date.strftime('%v') %>
-						</div>
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<%= link_to room_path(trip.room) do %>
 							<%= image_tag trip.room.photos[0].image.url(:thumb) %>
 							<% end %>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-3">Start date:<br>
+							<%= trip.start_date.strftime('%v') %><br>
+							End date:<br>
+							<%= trip.end_date.strftime('%v') %>
+						</div>
+						<div class="col-md-4">Your Host: <br>
 							<%= link_to user_path(trip.room.user) do %>
-							<%= image_tag avatar_url, class: "img-circle avatar-medium" %>
+							<%= image_tag avatar_url(trip.room.user.id), class: "img-circle avatar-medium" %>
+							<%= trip.room.user.fullname %>
 							<% end %>
 						</div>
 						<div class="col-md-2 right">
