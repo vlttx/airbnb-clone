@@ -45,7 +45,6 @@
 		</div>
 	</a>
 	</div>
-	^[A-Za-z]+,[ ]?[A-Za-z]+{2,}$
 	<div class="col-md-4 col-sm-6">
 		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=berlin", style="text-decoration: none;">
 		<div class="discovery-card" style="background-image: url('/assets/Berlin.jpg')">
@@ -70,17 +69,19 @@
 		<div class="col-md-4 col-sm-6">
 			<div class="panel panel-default">
 				<div class="panel-heading preview">
-					<%= image_tag room.photos[0].image.url(:medium) if room.photos.length > 0 %>
+					<% if room.photos.length > 0 %>
+					<%= link_to image_tag(room.photos[0].image.url(:medium)), room_path(room) %>
 			</div>
 				<div class="panel-body">
-					<h4 style="text-align: left"><strong><%= room.address.scan(/\w+/)[-2] %></strong></h4>
+					<h4 style="text-align: left"><strong><%= room.address.scan(/\w+/)[-2..-1].join(", ") %></strong></h4>
 					<%= image_tag avatar_url(room.user_id), class: "img-circle avatar-small" %>
-					<%= link_to room.listing_name, room%>
+					<%= link_to room.listing_name, room, style: "text-decoration: none; color: black"%>
 					
 				</div>
 			</div> 
 		</div> 
 		<% end %>
+		<% end%>
 </div>
 </div>
 
