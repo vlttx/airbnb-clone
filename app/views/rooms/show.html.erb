@@ -186,9 +186,9 @@
 		</div>
 <!-- Close by rooms -->
 <% if @room.nearbys(10) %>
-<h3> Rooms nearby </h3>
 <div class="row">
 	<% for room in @room.nearbys(10)%>
+	<h3> Rooms nearby </h3>
 	<!-- nearbys function is from geocoder as well as distance below -->
 	<div class="col-md-4">
 		<div class="panel panel-default">

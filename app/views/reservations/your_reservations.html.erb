@@ -22,13 +22,17 @@
 							<%= image_tag reservation.room.photos[0].image.url(:thumb) %>
 							<% end %>
 						</div>
-						<div class="col-md-3">Start date:<br>
+						<div class="col-md-2">Start date:<br>
 							<%= reservation.start_date.strftime('%v') %><br>
 							End date:<br><%= reservation.end_date.strftime('%v') %>
 						</div>
-						<div class="col-md-4">Your Guest: <br>
+						<div class="col-md-5">Your Guest: <br>
 							<%= link_to user_path(reservation.user) do %>
-							<%= image_tag avatar_url(reservation.user.id), class: "img-circle avatar-medium" %>
+							<% if reservation.user.avatar_content_type == nil %>
+									<%= image_tag avatar_url(reservation.user.id), class: "img-circle avatar-medium" %>
+					 		<% else %>
+									<%= image_tag(reservation.user.avatar.url(:thumb), class: "img-circle avatar-medium") %>&nbsp;
+							<% end%>
 							<%= reservation.user.fullname %>
 							<% end %>
 						</div>
