@@ -2,6 +2,12 @@
 @import "bootstrap";
 @import "toastr";
 
+
+@media (min-width: 992px){
+  .col-md-3 {
+    width: auto;
+  }
+}
 body {  
   color: #565a5c;
   background-color: #F8F8F8;
