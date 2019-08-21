@@ -36,7 +36,7 @@
             <% else %>
                 <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <%= image_tag avatar_url(current_user.id), class: "img-circle avatar-small" %>&nbsp;
+                <%= render 'shared/small_profile_pic' %>
                   <%= current_user.fullname %><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                 <li><%= link_to "Your Profile", user_path(current_user) %></li>

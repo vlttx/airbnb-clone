@@ -1,7 +1,12 @@
 
 <div class="panel">
 	<div class="panel-body">
-		<%= image_tag avatar_url(message.user.id), class: "image-circle avatar-small" %>
+		<% if message.user.avatar_content_type == nil %>
+			<%= image_tag avatar_url(message.user.id), class: "image-circle avatar-small" %>&nbsp;
+		<% else %>
+			<%= image_tag(message.user.avatar.url(:thumb), class: "img-circle avatar-small") %>&nbsp;
+		<% end%>
+		
 		<strong><%= message.user.fullname %></strong>
 		<span class="pull-right"><%= message.message_time %></span>
 		<br>
