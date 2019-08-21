@@ -1,7 +1,15 @@
 <div class="row">
 	
 	<div class="col-md-3 text-center">
-		<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %><br>
+		<% if @other.avatar_content_type == nil %>
+			<%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %><br>
+		<% else %>
+		    <%= image_tag(@other.avatar.url(:thumb), class: "img-circle avatar-medium") %><br>
+		<% end%>
+							
+
+
+		
 		<strong><%= @other.fullname %></strong>
 		<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
 	</div>
