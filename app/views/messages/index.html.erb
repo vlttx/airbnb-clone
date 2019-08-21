@@ -6,9 +6,7 @@
 		<% else %>
 		    <%= image_tag(@other.avatar.url(:thumb), class: "img-circle avatar-medium") %><br>
 		<% end%>
-							
-
-
+						
 		
 		<strong><%= @other.fullname %></strong>
 		<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
@@ -24,7 +22,7 @@
 				<div class="container">
 					
 					<%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
-					<!-- remote true because we're sending ajax request -->
+					<!-- remote true because we're sending ajax request to the server -->
 						<div class="form-group">
 							<%= f.text_area :content, placeholder: "Add a personal message", class: "form-control" %>
 						</div>
@@ -48,5 +46,11 @@
 
 </div>
 
-<%= subscribe_to conversation_messages_path(@conversation) %>
-<!--  we'll use the same path to publish and update to this channel via create.js -->
+
+
+
+
+
+
+<!--  we're subscribing in order to know when there is an update
+	from that conversation. we'll use the same path to publish and update to this channel via create.js -->
