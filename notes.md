@@ -17,3 +17,44 @@ by default the form's id in index.html is new_message cause the form_for path ne
 // 	$('#new_message')[0].reset();
 // also add = require private_pub too app.js
 */
+
+
+google maps with geocoder (did not work due to api restrictions)
+
+
+<div class="row">
+			<div class="col-md-12">
+				<div id="map"></div>
+
+				<style>
+		      #map {
+		        width: 100%;
+		        height: 400px;
+		      }
+		    </style>
+
+
+		     <script src="https://maps.googleapis.com/maps/api/js"></script>
+		    <script>
+		      function initialize() {
+		        var mapCanvas = document.getElementById('map');
+		        // we display map when we see id map, which is why we have a div with an id map above
+		        var mapOptions = {
+		          center: new google.maps.LatLng(<%= @room.latitude %>, <%= @room.longitude %>),
+		          zoom: 14,
+		          mapTypeId: google.maps.MapTypeId.ROADMAP
+		        }
+		        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+		        var marker = new google.maps.Marker({
+		        	position: new google.maps.LatLng(<%= @room.latitude %>, <%= @room.longitude %>),
+		        	title: "Available" 
+		        });
+
+		        marker.setMap(map);
+		      }
+		      google.maps.event.addDomListener(window, 'load', initialize);
+		    </script>
+
+			</div>
+		</div>
