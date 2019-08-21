@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
       @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
       @user = User.find_by(id: @room.user_id)
       # check if this user has made a review already, cause there can be only one
-
+      @api = ENV['API_KEY']
   end
 
   def new
