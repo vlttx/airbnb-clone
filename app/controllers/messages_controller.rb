@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
 		end
 	end
 
-	# include respond to js
+	# include respond to js instead of redirect_to conversation_messages_path(@conversation)
 
 	private
 
