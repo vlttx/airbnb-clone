@@ -94,8 +94,9 @@
 		</div>
 <!-- Carousel -->
 		<div class="row">
+			<div class="container">
 			<div class="col-md-8 col-md-offset-2">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5200">
 				  <!-- Indicators -->
 
 				  <% if @photos %>
@@ -128,6 +129,7 @@
 				  </a>
 				</div>		
 			</div> 		
+		</div>
 		</div>
 		<br>
 		<hr>
@@ -186,9 +188,11 @@
 		</div>
 <!-- Close by rooms -->
 <% if @room.nearbys(10) %>
+<h3> Rooms nearby </h3>
 <div class="row">
+
 	<% for room in @room.nearbys(10)%>
-	<h3> Rooms nearby </h3>
+	
 	<!-- nearbys function is from geocoder as well as distance below -->
 	<div class="col-md-4">
 		<div class="panel panel-default">
