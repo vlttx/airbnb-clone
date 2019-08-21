@@ -6,7 +6,12 @@
 	<% @reviews.order("id desc").each do |r| %>
 	<hr>
 		<div class="col-md-2">
-			<%= image_tag avatar_url(r.user_id), class: "imd-circle avatar-medium" %><br><%=r.created_at.strftime("%v")%>
+			<% if r.user.avatar_content_type == nil %>
+				<%= image_tag avatar_url(r.user_id), class: "img-circle avatar-medium" %>
+			<% else %>
+				<%= image_tag(r.user.avatar.url(:thumb), class: "img-circle avatar-medium") %>
+			<% end%>
+			<br><%=r.created_at.strftime("%v")%>
 		</div>
 		<div class="col-md-10">
 			<strong><%= r.user.fullname %> <div id="stars_<%= r.id %>"></div> </strong>
