@@ -17,24 +17,25 @@
 						<% room.reservations.each do |reservation| %>
 						<% if reservation.status %>
 					<div class="row">
-						<div class="col-md-2">
-							<%= reservation.start_date.strftime('%v') %>
-						</div>
-						<div class="col-md-6">
+						<div class="col-md-3">
 							<%= link_to room_path(reservation.room) do %>
 							<%= image_tag reservation.room.photos[0].image.url(:thumb) %>
 							<% end %>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-3">Start date:<br>
+							<%= reservation.start_date.strftime('%v') %><br>
+							End date:<br><%= reservation.end_date.strftime('%v') %>
+						</div>
+						<div class="col-md-4">Your Guest: <br>
 							<%= link_to user_path(reservation.user) do %>
-							<%= image_tag avatar_url, class: "img-circle avatar-medium" %>
+							<%= image_tag avatar_url(reservation.user.id), class: "img-circle avatar-medium" %>
+							<%= reservation.user.fullname %>
 							<% end %>
 						</div>
 						<div class="col-md-2 right">
 						<h4>$<%=reservation.total %></h4>
 						</div>
 					   </div>
-					<hr>
 					<% end %>
 				<% end %>
 			<% end %>			
@@ -42,3 +43,6 @@
 		</div>
 	</div>
 </div>
+
+
+			
