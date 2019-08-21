@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
   def home
-  	# @rooms = Room.all.sample(3)
-    @rooms = Room.all.where("(user_id != ?)", current_user.id).sample(3)
+
+    if current_user
+        @rooms = Room.all.where("(user_id != ?)", current_user.id).sample(3)
+    else
+        @rooms = Room.all.sample(3)
+    end
   end
 
   def search
