@@ -12,7 +12,12 @@
 
 							<div class="row conversation">
 								<div class="col-md-2">
-									<%= image_tag avatar_url(other), class: "img-circle avatar-medium" %>
+									<% if other.avatar_content_type == nil %>
+											<%= image_tag avatar_url(other.id), class: "img-circle avatar-small" %>&nbsp;
+									<% else %>
+									<%= image_tag(other.avatar.url(:thumb), class: "img-circle avatar-small") %>&nbsp;
+									<% end%>
+									
 								</div>
 								<div class="col-md-2">
 									<%= other.fullname %><br>

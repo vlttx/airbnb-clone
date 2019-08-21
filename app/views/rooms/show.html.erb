@@ -13,7 +13,13 @@
 			<div class="col-md-8">
 				<div class="row">
 					<div class="col-md-3 text-center">
-						<%= image_tag avatar_url(@user), class: "img-circle avatar-large" %><br><br>
+						<br>
+						<% if @user.avatar_content_type == nil %>
+							<%= image_tag avatar_url(@user.id), class: "img-circle avatar-medium" %>&nbsp;
+						<% else %>
+							<%= image_tag(@user.avatar.url(:thumb), class: "img-circle avatar-medium") %>&nbsp;
+						<% end%>
+						<br>
 						<%= @room.user.fullname %>
 					</div>
 					<div class="col-md-9">
