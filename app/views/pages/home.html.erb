@@ -74,7 +74,11 @@
 			</div>
 				<div class="panel-body">
 					<h4 style="text-align: left"><strong><%= room.address.scan(/\w+/)[-2..-1].join(", ") %></strong></h4>
-					 <%= render 'shared/small_profile_pic' %>
+					 <% if room.user.avatar_content_type == nil %>
+							<%= image_tag avatar_url(params[:id]), class: "img-circle avatar-small" %>&nbsp;
+					 <% elsif room.user %>
+							<%= image_tag(room.user.avatar.url(:thumb), class: "img-circle avatar-small") %>&nbsp;
+					<% end%>
 					<%= link_to room.listing_name, room, style: "text-decoration: none; color: black"%>
 					
 				</div>
