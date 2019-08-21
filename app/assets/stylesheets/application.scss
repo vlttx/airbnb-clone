@@ -298,13 +298,7 @@ input[type="checkbox"]:checked:before {
 }
 
 
-#myCarousel img {
-  width: auto;
-  margin:auto;
-  height: auto;
-  max-height: 700px;
-  object-fit:contain;
-}
+
 
 .main-image {
 
@@ -312,4 +306,37 @@ input[type="checkbox"]:checked:before {
   margin-left: 0;
   margin-right: 0;
   width: 100%;
+}
+
+div.col-md-4 {
+  margin: auto;
+}
+
+@media (max-width: 1900px){
+  #myCarousel img{
+    height: 600px;
+  }
+}
+
+
+@media (max-width: 1800px){
+  #myCarousel img{
+    height: 350px;
+  }
+
+@media (max-width: 1200px){
+  #myCarousel img{
+    height: auto;
+  }
+  }
+
+
+}
+
+.carousel-inner>.item>img {
+display: block;
+height: 600px;
+max-width: 100%;
+line-height: 1;
+width: 100%; // Add this
 }
