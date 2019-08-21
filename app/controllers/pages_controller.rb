@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-  	@rooms = Room.limit(3)
+  	@rooms = Room.all.sample(3)
   end
 
   def search
