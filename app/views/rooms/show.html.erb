@@ -151,41 +151,11 @@
 
 		<!-- GoogleMap -->
 
-		<div class="row">
-			<div class="col-md-12">
-				<div id="map"></div>
 
-				<style>
-		      #map {
-		        width: 100%;
-		        height: 400px;
-		      }
-		    </style>
-
-		    <script src="https://maps.googleapis.com/maps/api/js"></script>
-		    <script>
-		      function initialize() {
-		        var mapCanvas = document.getElementById('map');
-		        // we display map when we see id map, which is why we have a div with an id map above
-		        var mapOptions = {
-		          center: new google.maps.LatLng(<%= @room.latitude %>, <%= @room.longitude %>),
-		          zoom: 14,
-		          mapTypeId: google.maps.MapTypeId.ROADMAP
-		        }
-		        var map = new google.maps.Map(mapCanvas, mapOptions);
-
-		        var marker = new google.maps.Marker({
-		        	position: new google.maps.LatLng(<%= @room.latitude %>, <%= @room.longitude %>),
-		        	title: "Airbnb" 
-		        });
-
-		        marker.setMap(map);
-		      }
-		      google.maps.event.addDomListener(window, 'load', initialize);
-		    </script>
-
-			</div>
-		</div>
+<div class="iframe-container">
+		    <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%=@room.address%>&key=<%=@api%>" allowfullscreen></iframe>
+</div>
+		   
 <!-- Close by rooms -->
 <% if @room.nearbys(10) %>
 <h3> Rooms nearby </h3>
