@@ -1,10 +1,12 @@
 <div class="row">
 	<div class="col-md-3">
 		<div class="center">
-			<% if current_user.avatar_content_type == nil %>
+			<% if !@user && current_user.avatar_content_type == nil %>
 				<%= image_tag avatar_url(params[:id]), class: "avatar-full" %>
+			<% elsif !@user %>
+				<%= image_tag(current_user.avatar.url(:medium), class: "img-responsive", style:"width:100%;")%>
 			<% else %>
-				<%= image_tag(current_user.avatar.url(:medium)) %>
+				<%= image_tag(@user.avatar.url(:medium), class: "img-responsive", style:"width:100%;")%>
 			<% end%>
 
 			<% if current_user != @user %>
@@ -12,13 +14,18 @@
 					<%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
 				</div>
 			<% end %>
-			
-		</div>
+
+	</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">Verification</div>	
 			<div class="panel-body">
-				Email: <%= current_user.email %><br>
-				Phone number: <%= current_user.phone_number %>
+				<% if !@user %>
+					Email: <%= current_user.email %><br>
+				    Phone number: <%= current_user.phone_number %>
+				    <% else %> 
+				    	Email: <%= @user.email %><br>
+						Phone number: <%= @user.phone_number %>
+					<% end %>
 			</div>
 		</div>
 	</div>
