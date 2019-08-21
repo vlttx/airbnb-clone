@@ -24,7 +24,12 @@
 						</div>
 						<div class="col-md-4">Your Host: <br>
 							<%= link_to user_path(trip.room.user) do %>
-							<%= image_tag avatar_url(trip.room.user.id), class: "img-circle avatar-medium" %>
+							<% if trip.room.user.avatar_content_type == nil %>
+									<%= image_tag avatar_url(trip.room.user.id), class: "img-circle avatar-medium" %>
+					 		<% elsif trip.room.user %>
+									<%= image_tag(trip.room.user.avatar.url(:thumb), class: "img-circle avatar-medium") %>&nbsp;
+							<% end%>
+							
 							<%= trip.room.user.fullname %>
 							<% end %>
 						</div>
