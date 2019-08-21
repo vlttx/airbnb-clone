@@ -32,13 +32,13 @@ class ReservationsController < ApplicationController
 				business: 'victoriasnotebooks-facilitator@gmail.com',
 				cmd: '_xclick',
 				upload: 1,
-				notify_url: 'http://db367e34.ngrok.io/notify',
+				notify_url: 'http://e4dec446.ngrok.io/notify',
 				# notify and your_trips are actions
 				amount: @reservation.total,
 				item_name: @reservation.room.listing_name,
 				item_number: @reservation.id,
 				quantity: '1',
-				return: 'http://db367e34.ngrok.io/your_trips'
+				return: 'http://e4dec446.ngrok.io/your_trips'
 			}
 			redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
 		else
