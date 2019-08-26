@@ -59,8 +59,9 @@
 
 		<% @rooms.each do |r| %>
 			<% if !r.reviews.blank? %>
+			<h4>Reviews</h4>
 				<% r.reviews.each do |rev| %>
-				<h4>Reviews</h4>
+				
 				<div class="row">
 					<div class="col-md-2 text-center">
 						<%= image_tag avatar_url(rev.user.id), class: "img-circle avatar-medium" %> <br>
