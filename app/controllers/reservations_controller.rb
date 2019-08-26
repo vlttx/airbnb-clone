@@ -27,19 +27,20 @@ class ReservationsController < ApplicationController
 		@reservation = current_user.reservations.create(reservation_params)
 
 		if @reservation
+			
 			# send request to paypal -- for that you need to use ngrok or something similar because
 			# otherwise PP wont be able to send a message about a completed payment.
 			values = {
 				business: 'victoriasnotebooks-facilitator@gmail.com',
 				cmd: '_xclick',
 				upload: 1,
-				notify_url: 'http://7c0bdf68.ngrok.io/notify',
+				notify_url: 'http://0ead7859.ngrok.io/notify',
 				# notify and your_trips are actions
 				amount: @reservation.total,
 				item_name: @reservation.room.listing_name,
 				item_number: @reservation.id,
 				quantity: '1',
-				return: 'http://7c0bdf68.ngrok.io/your_trips'
+				return: 'http://0ead7859.ngrok.io/your_trips'
 			}
 			redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
 		else
