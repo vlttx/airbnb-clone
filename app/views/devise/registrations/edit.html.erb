@@ -5,7 +5,6 @@
       <li class="sidebar-item"><%= link_to "Edit Profile", edit_user_registration_path, class: "sidebar-link actiove" %></li>
     </ul> 
     <br>
-    <%= link_to "View My Profile", user_path(current_user.id), class: "btn btn-default wide" %>
     
   </div>
   <div class="col-md-9 text-center">
@@ -15,14 +14,12 @@
         <div class="container">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                 <%= render 'shared/devisemes', resource: resource %>
-
+                <label for="file">Upload Your Photo:</label>
                 <div class="form-group">
-                    <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
-                    <div class="col-sm-6">
-                        <%= f.file_field :avatar %>
-                    </div>
-                </div>
 
+                        <%= f.file_field :avatar%>
+                </div>
+                <label>Edit Your Information:</label>
                 <div class="form-group">
                   <%= f.text_field :fullname, autofocus: true,  :class => "form-control", :placeholder => "Full Name" %>
                 </div>
