@@ -9,8 +9,10 @@ class PagesController < ApplicationController
   end
 
   def search
+    @api = ENV['API_KEY']
   	if params[:search].present? && params[:search].strip != ""
   		session[:loc_search] = params[:search]
+      @location = params[:search]
       # we check if the user provided location or not. We use session variable
       # in order to remember the location they search so that they would not need to retype
   	end
@@ -18,10 +20,10 @@ class PagesController < ApplicationController
   	arrResult = Array.new
 
   	if session[:loc_search] && session[:loc_search] != ""
-  		@rooms_address = Room.where(active: true).near(session[:loc_search], 5, order: 'distance')
+  		@rooms_address = Room.where.not(user_id:current_user.id).where(active:true).near(session[:loc_search], 5, order: 'distance')
       # if user entered a location, we provide rooms nearby
   	else
-  		@rooms_address = Room.where(active: true).all
+  		@rooms_address = Room.where.not(user_id:current_user.id).where(active:true).all
   	end
 
   	@search = @rooms_address.ransack(params[:q])
@@ -31,7 +33,7 @@ class PagesController < ApplicationController
     # that meet all user selected features
 
   	@arrRooms = @rooms.to_a 
-  	# we need to go through those room and that is why we get them into an array
+  	# we need to go through those rooms and that is why we get them into an array
     # below we search for a specific date range and see if that range involves unavailable rooms, so we can remove it from results
   	if (params[:start_date] && params[:end_date] && !params[:start_date].empty? && !params[:end_date].empty?)
   		start_date = Date.parse(params[:start_date])
