@@ -12,7 +12,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'jquery-rails'
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'turbolinks'
 gem 'thin'
 # Use SCSS for stylesheets
