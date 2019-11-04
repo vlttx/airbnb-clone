@@ -1,7 +1,7 @@
 # README
 
 
-# Airbnb clone built using Rails, Bootstrap, jQuery and JavaScript
+### Airbnb clone built using Rails, Bootstrap, jQuery and JavaScript
 
 
 This clone was built following a tutorial created by Leo Trieu in 2015,
