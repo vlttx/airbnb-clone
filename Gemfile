@@ -34,6 +34,7 @@ gem 'jquery-ui-rails'
 gem 'toastr-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "rack", ">= 2.0.8"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
