@@ -10,7 +10,7 @@ gem 'pg'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 gem 'jquery-rails'
 gem "devise", ">= 4.7.1"
 gem 'turbolinks'
